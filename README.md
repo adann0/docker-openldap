@@ -46,7 +46,7 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     --volume <lib_path>:/var/lib/ldap \
     --volume <slapd.d_path>:/etc/ldap/slapd.d \
     --hostname ldap.example.org \
-    --volume <ssl_path>:/container/service/slapd/assets/certs \
+    --volume /path/to/ssl/openldap:/container/service/slapd/assets/certs \
     --env LDAP_TLS_CRT_FILENAME=example.org.crt \
     --env LDAP_TLS_KEY_FILENAME=example.org.key \
     --env LDAP_TLS_CA_CRT_FILENAME=rootCA.crt \
