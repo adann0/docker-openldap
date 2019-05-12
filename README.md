@@ -1,4 +1,4 @@
-# adann0/openldap-armv7
+# openldap-armv7
 
 Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Changelog](CHANGELOG.md) | [Docker Hub](https://hub.docker.com/r/osixia/openldap/) 
 
