@@ -1,9 +1,5 @@
 # adann0/openldap-armv7
 
-![Docker Pulls](https://img.shields.io/docker/pulls/osixia/openldap.svg)
-![Docker Stars](https://img.shields.io/docker/stars/osixia/openldap.svg)
-![](https://images.microbadger.com/badges/image/osixia/openldap.svg)
-
 Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Changelog](CHANGELOG.md) | [Docker Hub](https://hub.docker.com/r/osixia/openldap/) 
 
 **A docker image to run OpenLDAP.**
