@@ -1,4 +1,4 @@
-# osixia/openldap
+# adann0/openldap-armv7
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/osixia/openldap.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/osixia/openldap.svg)
