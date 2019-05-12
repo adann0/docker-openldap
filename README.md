@@ -68,13 +68,21 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     sed -i '1s/osixia\/web-baseimage:1.1.1/web-baseimage:armv7/1' image/Dockerfile &&
     docker build -t phpldapadmin:armv7 --rm image
 
-## phpLDAPadmin Certificates
+## Tests
 
-    $ cd .. && mkdir -p phpldapadmin/apache && cd phpldapadmin/apache
-    $ openssl req -new -x509 -days 365 -nodes -out phpldapadmin.crt -keyout phpldapadmin.key
-    $ openssl dhparam -out dhparams.pem 2048
+    $ docker run -p 6443:443 \
+		--name phpldapadmin \
+        --env PHPLDAPADMIN_LDAP_HOSTS=ldap.example.org \
+		--volume /path/to/ssl/openldap:/container/service/ldap-client/assets/certs \
+		--env PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME=rootCA.crt \
+		--env PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME=example.org.crt \
+		--env PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME=example.org.key \
+        --volume /path/to/ssl/phpldapadmin:/container/service/phpldapadmin/assets/apache2/certs \
+        --env PHPLDAPADMIN_HTTPS_CRT_FILENAME=example.org.crt \
+        --env PHPLDAPADMIN_HTTPS_KEY_FILENAME=example.org.key \
+        --env PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME=rootCA.crt \
+        --detach phpldapadmin:armv7
 
-# Tests
 
 # More informations
 
