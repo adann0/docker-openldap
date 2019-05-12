@@ -20,7 +20,3 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     docker build -t openldap:armv7 --rm image
 
 # You need to generate your own SSL Certificate : https://gist.github.com/fntlnz/cf14feb5a46b2eda428e000157447309
-    
-    
-# Sources :
-    - https://gist.github.com/fntlnz/cf14feb5a46b2eda428e000157447309
