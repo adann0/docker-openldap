@@ -13,9 +13,8 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     sed '1s/debian:stretch-slim/balenalib\/raspberrypi3-debian:stretch/1' image/Dockerfile &&
     docker build -t light-baseimage:armv7 --rm image
 
-    $ git clone https://github.com/osixia/docker-openldap &&
-    cd docker-openldap &&
-    sed '1s/osixia\/light-baseimage:1.1.2/light-baseimage:armv7/3' image/Dockerfile &&
+    $ git clone https://github.com/adann0/openldap-armv7 &&
+    cd openldap-armv7 &&
     docker build -t openldap:armv7 --rm image
 
    
