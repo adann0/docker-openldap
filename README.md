@@ -42,17 +42,22 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 ## Tests
 
     $ docker run \
-    --name openldap \
-    --volume <lib_path>:/var/lib/ldap \
-    --volume <slapd.d_path>:/etc/ldap/slapd.d \
-    --hostname ldap.example.org \
-    --volume /path/to/ssl/openldap:/container/service/slapd/assets/certs \
-    --env LDAP_TLS_CRT_FILENAME=example.org.crt \
-    --env LDAP_TLS_KEY_FILENAME=example.org.key \
-    --env LDAP_TLS_CA_CRT_FILENAME=rootCA.crt \
-    --detach openldap:armv7
+	--name openldap \
+	-p 389:389 \
+	-p 636:636 \
+	--env LDAP_ORGANISATION="Example TLD" \
+	--env LDAP_DOMAIN="example.org" \
+	--env LDAP_ADMIN_PASSWORD="secret" \
+	--volume /home/nqqb/openldap/lib:/var/lib/ldap \
+	--volume /home/nqqb/openldap/slapd:/etc/ldap/slapd.d \
+	--hostname ldap.example.org \
+	--volume /path/to/ssl/openldap:/container/service/slapd/assets/certs \
+	--env LDAP_TLS_CRT_FILENAME=example.org.crt \
+	--env LDAP_TLS_KEY_FILENAME=example.org.key \
+	--env LDAP_TLS_CA_CRT_FILENAME=rootCA.crt \
+	--detach openldap:armv7
 
-    $ docker exec openldap ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin
+    $ docker exec openldap ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w secret
 
 # phpLDAPadmin
 
@@ -70,19 +75,19 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 
 ## Tests
 
-    $ docker run -p 6443:443 \
-		--name phpldapadmin \
-        --env PHPLDAPADMIN_LDAP_HOSTS=ldap.example.org \
-		--volume /path/to/ssl/openldap:/container/service/ldap-client/assets/certs \
-		--env PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME=rootCA.crt \
-		--env PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME=example.org.crt \
-		--env PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME=example.org.key \
-        --volume /path/to/ssl/phpldapadmin:/container/service/phpldapadmin/assets/apache2/certs \
-        --env PHPLDAPADMIN_HTTPS_CRT_FILENAME=example.org.crt \
-        --env PHPLDAPADMIN_HTTPS_KEY_FILENAME=example.org.key \
-        --env PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME=rootCA.crt \
-        --detach phpldapadmin:armv7
-
+    $ docker run \
+	-p 6443:443 \
+	--name phpldapadmin \
+	--env PHPLDAPADMIN_LDAP_HOSTS=192.168.x.x \
+	--volume /path/to/ssl/openldap:/container/service/ldap-client/assets/certs \
+	--env PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME=rootCA.crt \
+	--env PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME=example.org.crt \
+	--env PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME=example.org.key \
+	--volume /path/to/ssl/phpldapadmin:/container/service/phpldapadmin/assets/apache2/certs \
+	--env PHPLDAPADMIN_HTTPS_CRT_FILENAME=example.org.crt \
+	--env PHPLDAPADMIN_HTTPS_KEY_FILENAME=example.org.key \
+	--env PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME=rootCA.crt \
+	--detach phpldapadmin:armv7
 
 # More informations
 
