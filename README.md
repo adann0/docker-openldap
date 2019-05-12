@@ -6,7 +6,9 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 
 > OpenLDAP website : [www.openldap.org](http://www.openldap.org/)
 
-# Build
+# OpenLDAP
+
+## Build
     
     $ mkdir openldap && cd openldap
 
@@ -20,7 +22,7 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     cd openldap-armv7 &&
     docker build -t openldap:armv7 --rm image
 
-# OpenLDAP Certificates
+## OpenLDAP Certificates
 
     $ cd .. && mkdir -p ssl/openldap && cd ssl/openldap
     
@@ -39,7 +41,7 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     $ openssl x509 -req -in example.org.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out example.org.crt -days 500 -sha256
     $ openssl x509 -in example.org.crt -text -noout
 
-# Tests
+## Tests
 
     $ docker run \
     --name openldap \
@@ -56,6 +58,8 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 
 # phpLDAPadmin
 
+## Build
+
     $ git clone https://github.com/osixia/docker-web-baseimage.git &&
     cd docker-web-baseimage &&
     sed -i '1s/osixia\/light-baseimage:1.1.1/light-baseimage:armv7/1' image/Dockerfile &&
@@ -66,7 +70,7 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     sed -i '1s/osixia\/web-baseimage:1.1.1/web-baseimage:armv7/1' image/Dockerfile &&
     docker build -t phpldapadmin:armv7 --rm image
 
-# PHPLDAPAdmin Certificates
+## phpLDAPadmin Certificates
 
     $ cd .. && mkdir -p phpldapadmin/apache && cd phpldapadmin/apache
     $ openssl req -new -x509 -days 365 -nodes -out phpldapadmin.crt -keyout phpldapadmin.key
@@ -74,7 +78,8 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 
 # Tests
 
-# More informations 
+# More informations
+
     - https://github.com/osixia/docker-openldap
     - https://github.com/osixia/docker-phpLDAPadmin
     - https://gist.github.com/fntlnz/cf14feb5a46b2eda428e000157447309
