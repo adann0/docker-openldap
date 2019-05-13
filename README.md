@@ -25,9 +25,9 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     $ cd .. && mkdir -p ssl/openldap && cd ssl/openldap
     
     $ openssl genrsa -des3 -out rootCA.key 4096
-    $ openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.crt
+    $ openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.crt # => ldap.example.org
     $ openssl genrsa -out example.org.key 2048
-    $ openssl req -new -key example.org.key -out example.org.csr
+    $ openssl req -new -key example.org.key -out example.org.csr # => 
     $ openssl req -new -sha256 \
     -key example.org.key \
     -subj "/C=US/ST=CA/O=MyOrg, Inc./CN=example.org" \
