@@ -66,6 +66,7 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     $ git clone https://github.com/osixia/docker-web-baseimage.git &&
     cd docker-web-baseimage &&
     sed -i '1s/osixia\/light-baseimage:1.1.1/light-baseimage:armv7/1' image/Dockerfile &&
+    sed -i '2d' image/Dockerfile &&
     docker build -t web-baseimage:armv7 --rm image
 
     $ cd .. && git clone https://github.com/osixia/docker-phpLDAPadmin.git &&
