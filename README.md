@@ -6,6 +6,8 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 
 # OpenLDAP
 
+    $ docker pull adann0/openldap:armv7
+
 ## Build
 
     $ git clone https://github.com/osixia/docker-light-baseimage.git && 
@@ -58,6 +60,8 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     $ docker exec openldap ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w secret
 
 # phpLDAPadmin
+
+    $ docker pull adann0/phpldapadmin:armv7
 
 ## Build
 
