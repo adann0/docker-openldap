@@ -7,12 +7,10 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 # OpenLDAP
 
 ## Build
-    
-    $ mkdir openldap && cd openldap
 
     $ git clone https://github.com/osixia/docker-light-baseimage.git && 
     cd docker-light-baseimage &&
-    sed -i '1s/debian:stretch-slim/balenalib\/raspberrypi3-debian:stretch/1' image/Dockerfile &&
+    sed -i '1s/debian:stretch-slim/arm32v7\/debian:stretch/1' image/Dockerfile &&
     docker build -t light-baseimage:armv7 --rm image && 
     cd ..
 
@@ -51,7 +49,7 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 	--volume /home/nqqb/openldap/lib:/var/lib/ldap \
 	--volume /home/nqqb/openldap/slapd:/etc/ldap/slapd.d \
 	--hostname ldap.example.org \
-	--volume /path/to/ssl/openldap:/container/service/slapd/assets/certs \
+	--volume /mnt/config/ssl/openldap:/container/service/slapd/assets/certs \
 	--env LDAP_TLS_CRT_FILENAME=example.org.crt \
 	--env LDAP_TLS_KEY_FILENAME=example.org.key \
 	--env LDAP_TLS_CA_CRT_FILENAME=rootCA.crt \
@@ -89,6 +87,20 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
 	--env PHPLDAPADMIN_HTTPS_KEY_FILENAME=example.org.key \
 	--env PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME=rootCA.crt \
 	--detach phpldapadmin:armv7
+
+# Docker Hub
+
+To push Images on Docker Hub :
+
+    $ docker login --username=<hub_repo> --email=<hub_email>
+    $ docker images
+    $ docker tag <image_id> <hub_repo>/<image>:<tag>
+    $ docker push <hub_repo>/<image>:<tag>
+
+Then :
+
+    $ docker manifest inspect --verbose <hub_repo>/<image>:<tag> # => Architecture : arm
+    $ docker pull <hub_repo>/<image>:<tag>
 
 # More informations
 
