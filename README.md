@@ -20,13 +20,6 @@ Latest release: 1.2.4 - OpenLDAP 2.4.47 -  [Osixia OpenLDAP](https://github.com/
     cd openldap-armv7 &&
     docker build -t openldap:armv7 --rm image
 
-To push on Docker Hub :
-
-    $ docker login --username=<hub_repo> --email=<hub_email>
-    $ docker images
-    $ docker tag <image_id> <hub_repo>/<image>:<tag>
-    $ docker push <hub_repo>/<image>:<tag>
-
 ## OpenLDAP Certificates
 
     $ cd .. && mkdir -p ssl/openldap && cd ssl/openldap
@@ -96,6 +89,19 @@ To push on Docker Hub :
 	--env PHPLDAPADMIN_HTTPS_KEY_FILENAME=example.org.key \
 	--env PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME=rootCA.crt \
 	--detach phpldapadmin:armv7
+
+## Docker Hub
+
+To push on Docker Hub :
+
+    $ docker login --username=<hub_repo> --email=<hub_email>
+    $ docker images
+    $ docker tag <image_id> <hub_repo>/<image>:<tag>
+    $ docker push <hub_repo>/<image>:<tag>
+
+Then :
+
+    $ docker pull <hub_repo>/<image>:<tag>
 
 # More informations
 
